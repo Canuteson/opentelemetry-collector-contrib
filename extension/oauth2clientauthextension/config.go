@@ -30,31 +30,31 @@ var (
 
 // Config stores the configuration for OAuth2 Client Credentials (2-legged OAuth2 flow) setup.
 type Config struct {
-	config.ExtensionSettings `mapstructure:",squash"`
+	config.ExtensionSettings `mapstructure:",squash" yaml:"extension_settings"`
 
 	// ClientID is the application's ID.
 	// See https://datatracker.ietf.org/doc/html/rfc6749#section-2.2
-	ClientID string `mapstructure:"client_id"`
+	ClientID string `mapstructure:"client_id" yaml:"client_id"`
 
 	// ClientSecret is the application's secret.
 	// See https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1
-	ClientSecret string `mapstructure:"client_secret"`
+	ClientSecret string `mapstructure:"client_secret" yaml:"client_secret"`
 
 	// TokenURL is the resource server's token endpoint
 	// URL. This is a constant specific to each server.
 	// See https://datatracker.ietf.org/doc/html/rfc6749#section-3.2
-	TokenURL string `mapstructure:"token_url"`
+	TokenURL string `mapstructure:"token_url" yaml:"token_url"`
 
 	// Scope specifies optional requested permissions.
 	// See https://datatracker.ietf.org/doc/html/rfc6749#section-3.3
-	Scopes []string `mapstructure:"scopes,omitempty"`
+	Scopes []string `mapstructure:"scopes,omitempty" yaml:"scopes,omitempty"`
 
 	// TLSSetting struct exposes TLS client configuration for the underneath client to authorization server.
-	TLSSetting configtls.TLSClientSetting `mapstructure:"tls,omitempty"`
+	TLSSetting configtls.TLSClientSetting `mapstructure:"tls,omitempty" yaml:"tls,omitempty"`
 
 	// Timeout parameter configures `http.Client.Timeout` for the underneath client to authorization
 	// server while fetching and refreshing tokens.
-	Timeout time.Duration `mapstructure:"timeout,omitempty"`
+	Timeout time.Duration `mapstructure:"timeout,omitempty" yaml:"timeout,omitempty"`
 }
 
 var _ config.Extension = (*Config)(nil)
